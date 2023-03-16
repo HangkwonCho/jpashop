@@ -1,7 +1,7 @@
 package jpabook.jpashop;
 
 import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderStatus;
+import jpabook.jpashop.domain.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,6 +19,7 @@ public class JpaMain {
         tx.begin();
 
         try {
+            //exMethodV1(em);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
@@ -26,5 +27,10 @@ public class JpaMain {
             em.close();
         }
         emf.close();
+    }
+
+    private static void exMethodV1(EntityManager em) {
+        Order order = new Order();
+        order.addOrderItem(new OrderItem());
     }
 }
